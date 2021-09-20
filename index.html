@@ -246,3 +246,141 @@ body * {
 }
 
     </style>
+
+  </head>
+
+<body translate="no" >
+
+  
+<div class="window microsoft">
+  <div class="header">
+    <div class="title"> 
+      <div class="icon"></div>
+      <div class="text">THE-PACKET_SYSTEM_UPDATER.EXE</div>
+    </div>
+    <div class="buttons">
+      <div class="btn minus"> <i class="material-icons"> </i></div>
+      <div class="btn expand"> <i class="material-icons"> </i></div>
+      <div class="btn close"> <i class="material-icons"> </i></div>
+    </div>
+  </div>
+  <div class="form">
+    <div class="top">
+      <div class="icon">
+        <div class="amd">
+          <div class="amd-border">
+            <div class="amd-top"></div>
+            <div class="amd-bottom"></div>
+          </div>
+        </div>
+      </div>
+      <div class="loader">
+        <div class="text">Extract: MemzClean.dll... 35%</div>
+        <div class="bar"></div>
+      </div>
+    </div>
+    <div class="middle">
+      <div class="display">
+        <div class="line">Extract TrojanHorseRemove.dll... 100%</div>
+        <div class="line">Extract SpyWareRemove.exe... 100%</div>
+        <div class="line">Extract MalwareRemove.exe... 100%</div>
+        <div class="line">Extract FreeGames100%LegitRemove.dll... 100%</div>
+        <div class="line">Extract mfc120uRemove.dll... 100%</div>
+        <div class="line">Extract atdcm64aRemove.exe... 100%</div>
+        <div class="line">Extract Qt5WinExtrasClean.dll... 100%</div>
+        <div class="line">Extract RemoveRadeonInstaller.exe... 100%</div>
+        <div class="line">Extract Setup-Clean.exe... 100%</div>
+        <div class="line">Extract libEGL.dll... 100%</div>
+        <div class="line">Extract mfc120u.dll... 100%</div>
+        <div class="line">Extract atdcm64a.exe... 100%</div>
+        <div class="line">Extract Qt5WinExtras.dll... 100%</div>
+        <div class="line">Extract RadeonInstaller.exe... 100%</div>
+        <div class="line">Extract Setup.exe... 100%</div>
+        <div class="line">Extract libEGL.dll... 100%</div>
+        <div class="line">Extract mfc120u.dll... 100%</div>
+        <div class="line">Extract atdcm64a.exe... 100%</div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="btn">Cancel</div>
+      <div class="text">Professor Galde The-Packet v10.31.2021</div>
+      <div class="btn">Back</div>
+      <div class="btn">Close</div>
+    </div>
+  </div>
+</div>
+  
+  
+  
+
+    <script >
+      var data = []
+
+var nameData = {
+   prefix: ['Win', 'Qt', 'Radeon', 'AMD', 'Setup', 'lib', 'mfc', 'ms', 'mdn', 'arizona'],
+   word: ['ThePacket', 'Installer', 'GLES', 'Soft', 'Diag', 'Over', 'vcr', 'Open', 'Light', 'galde'],
+   suffix: ['Installer.exe', 'Extra.dll', '64a.exe', 'V2.dll', '12sw.exe', 'x86.sys', '120.dll', 'CAST.exe']
+}
+var display = document.querySelectorAll('.display')[0]
+var loaderBar = document.querySelectorAll('.loader .bar')[0]
+var loaderText = document.querySelectorAll('.loader .text')[0]
+var words = makeInstallerFiles()
+drawInstallerFiles(words)
+setInterval(function(){
+   for(var i = 0; i < words.length; i++){  
+      if(words[i].percent < 100){
+         words[i].percent += Math.floor(Math.random()*25)
+         loaderBar.style.display = 'block'
+         if(words[i].percent >= 100){
+            words[i].percent = 100
+            if(words.length-1 !== i)
+               loaderBar.style.display = 'none'
+         }
+         break;
+      } 
+   }
+   drawInstallerFiles(words)
+}, 200)
+function drawInstallerFiles(words){
+   display.innerHTML = ''
+   words.forEach(function(word){
+      if(word.percent > 0){
+         display.innerHTML += '<div class="line">'+word.word+'...'+word.percent+'%</div>'
+         loaderText.innerHTML = word.word+'...'+word.percent+'%'
+         loaderBar.style.width = word.percent + '%'
+         if(word.percent < 100)
+            display.scrollTop = 100000;
+         
+      }
+   })
+}
+
+function makeInstallerFiles(){
+   var arr = []
+   for(var i = 0; i < 2000; i++){
+      var prefix = chooseRandomValue(nameData.prefix) 
+      var word = chooseRandomValue(nameData.word) 
+      var suffix = chooseRandomValue(nameData.suffix) 
+      arr.push({
+         word: prefix + word + suffix,
+         percent: 0
+      })
+   }
+   return arr
+}
+   
+function chooseRandomValue(arr){
+   min = 0
+   max = arr.length
+   return arr[Math.floor(Math.random()*(max-min)+min)]
+}
+    </script>
+
+
+
+  
+  
+
+</body>
+
+</html>
